@@ -133,4 +133,4 @@ A 1-second sleep between ticker requests keeps the pipeline well within Finnhub'
 ## Author
 
 Built by [Sam Walker](https://github.com/HiddenProdige)  
-[LinkedIn](www.linkedin.com/in/samuel-walker-186473220)
+
