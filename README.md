@@ -16,7 +16,7 @@ Finnhub API → DB (SQLite) → Cleaning & Validation → FinBERT → Dashboard 
 |---|---|---|
 | Data Models | `models.py` | ✅ Complete |
 | API Ingestion | `finnhub_ingest.py` | ✅ Complete |
-| Database Layer | `db.py` | 🔧 In Progress |
+| Database Layer | `db.py` | ✅ Complete |
 | Cleaning & Validation | `cleaner.py` | 🔧 In Progress |
 | FinBERT Sentiment | `sentiment.py` | 📋 Planned |
 | Dashboard | `dashboard.py` | 📋 Planned |
