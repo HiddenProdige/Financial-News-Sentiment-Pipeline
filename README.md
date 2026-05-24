@@ -123,7 +123,7 @@ A 1-second sleep between ticker requests keeps the pipeline well within Finnhub'
 
 - [x] `models.py` — shared Article dataclass
 - [x] `finnhub_ingest.py` — Finnhub API ingestion
-- [ ] `db.py` — SQLite schema and insert/query layer
+- [X] `db.py` — SQLite schema and insert/query layer
 - [ ] `cleaner.py` — deduplication, null checks, text normalization
 - [ ] `sentiment.py` — FinBERT inference pipeline
 - [ ] `dashboard.py` — Streamlit dashboard with sentiment trends by ticker
