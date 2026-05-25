@@ -27,7 +27,6 @@ def analyze_article(article: dict) -> dict:
     }
 
 # Analyzes the sentiment of a single article
-
 def analyze_single(ticker: str, from_date: str, to_date: str) -> dict:
     from finnhub_ingest import fetch_news
     articles = fetch_news(ticker, from_date, to_date)
@@ -58,7 +57,7 @@ def analyze_all(articles: list[dict]) -> list[dict]:
     print(f"\nSentiment analysis complete. Processed {len(results)}/{len(articles)} articles.")
     return results
 
-#Prints the sentiment analysis of a single or all articles
+# Prints the sentiment analysis of a single or all articles
 if __name__ == "__main__":
     mode = "full"
 # Mode can be "single" or "full"
@@ -79,7 +78,7 @@ if __name__ == "__main__":
         print(f"  Positive : {distribution['positive']} ({distribution['positive']/total:.1%})")
         print(f"  Negative : {distribution['negative']} ({distribution['negative']/total:.1%})")
         print(f"  Neutral  : {distribution['neutral']} ({distribution['neutral']/total:.1%})")
-    
+        # Sample Results
         print(f"\nSample Results:")
         for r in results[:3]:  # Print the first 3 results as a sample
             print(f" Headline: {r['headline']}")
