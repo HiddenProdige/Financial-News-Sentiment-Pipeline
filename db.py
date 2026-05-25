@@ -64,13 +64,13 @@ def get_all_articles(conn: sqlite3.Connection) -> list[Article]:
 # Prevents the code from running if the script is imported (i.e do not run automatically when imported)
 if __name__ == "__main__":
     from finnhub_ingest import fetch_all
-
+    conn = get_db_connection()
+    create_table(conn)
     articles = fetch_all(
         tickers=["AAPL", "NVDA"],
         from_date="2025-07-01",
         to_date="2025-08-17"
     )
-
     # Inserts the fetched articles into the database
     conn = get_db_connection()
     rows = get_all_articles(conn)
