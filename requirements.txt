@@ -1,0 +1,6 @@
+requests
+python-dotenv
+transformers
+torch
+streamlit
+finnhub-python
