@@ -13,7 +13,7 @@ TICKERS = ["AAPL", "NVDA", "GOOGL", "AMZN", "NFLX", "MSFT", "IBM", "META", "SNOW
 
 
 # This Function scrapes and converts all of the raw data from the API to the Article Class
-def parse_article (raw: dict) -> Article:
+def parse_article (raw: dict, symbol: str) -> Article:
     return Article(
         url= raw.get("url", ""),
         headline= raw.get("headline", ""),
@@ -23,6 +23,7 @@ def parse_article (raw: dict) -> Article:
                         raw["datetime"]
                       ).isoformat() if raw.get("datetime") else None, # Converts the standard UTC time to an ISO String
         section= raw.get("category"),
+        ticker= symbol,
     )
 
 # This Function is for single-ticker scraping
@@ -35,7 +36,7 @@ def fetch_news(symbol: str, from_date: str, to_date: str) -> list[Article]:
     }
     response = requests.get(BASE_URL, params=params)
     response.raise_for_status() #Raises Alarm for HTTP Errors
-    return [parse_article(item) for item in response.json()]
+    return [parse_article(item, symbol) for item in response.json()]
 # Article Example from a single-ticker scrape
 #if __name__ == "__main__":
 #     articles = fetch_news("SNOW", "2025-07-01", "2025-08-17")
