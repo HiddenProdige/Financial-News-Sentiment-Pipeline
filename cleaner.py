@@ -55,6 +55,7 @@ def normalize_article(articles: sqlite3.Row) -> list[dict]: #Switched from sqlit
             "author": normalize_text(article["author"]) if article["author"] else None, # Handles missing authors aka null values
             "published_at": article["published_at"],
             "section": normalize_text(article["section"]) if article["section"] and article["section"].strip() else None,
+            "ticker": article["ticker"],
             "scraped_at": article["scraped_at"],
         })
     print(f"[INFO] Normalized {len(normalized)} articles.")
