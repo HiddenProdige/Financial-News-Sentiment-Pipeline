@@ -22,6 +22,7 @@ def create_table(conn: sqlite3.Connection) -> None:
                  author TEXT,
                  published_at TEXT,
                  section TEXT,
+                 ticker TEXT,
                  scraped_at TEXT
                  )
     ''')
@@ -32,7 +33,7 @@ def create_table(conn: sqlite3.Connection) -> None:
 def insert_articles(conn: sqlite3.Connection, articles: list[Article]) -> None:
     inserted = 0
     skipped = 0
-# Iterate through the list of articles and insert each one into the database and  it will be skipped if it already exists
+# Iterate through the list of articles and insert each one into the database, and it will be skipped if it already exists
     for article in articles:
         try:
             conn.execute('''
@@ -44,7 +45,9 @@ def insert_articles(conn: sqlite3.Connection, articles: list[Article]) -> None:
                   article.headline, 
                   article.body, 
                   article.author, 
-                  article.published_at, 
+                  article.published_at,
+                  article.section,
+                  article.ticker,
                   article.scraped_at))
             if conn.total_changes > 0:
                 inserted += 1
