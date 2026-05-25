@@ -17,9 +17,9 @@ Finnhub API → DB (SQLite) → Cleaning & Validation → FinBERT → Dashboard 
 | Data Models | `models.py` | ✅ Complete |
 | API Ingestion | `finnhub_ingest.py` | ✅ Complete |
 | Database Layer | `db.py` | ✅ Complete |
-| Cleaning & Validation | `cleaner.py` | 🔧 In Progress |
-| FinBERT Sentiment | `sentiment.py` | 📋 Planned |
-| Dashboard | `dashboard.py` | 📋 Planned |
+| Cleaning & Validation | `cleaner.py` | ✅ Complete |
+| FinBERT Sentiment | `sentiment.py` | 🔧 In Progress |
+| Dashboard | `dashboard.py` | 🔧 In Progress |
 
 ---
 
@@ -124,7 +124,7 @@ A 1-second sleep between ticker requests keeps the pipeline well within Finnhub'
 - [x] `models.py` — shared Article dataclass
 - [x] `finnhub_ingest.py` — Finnhub API ingestion
 - [X] `db.py` — SQLite schema and insert/query layer
-- [ ] `cleaner.py` — deduplication, null checks, text normalization
+- [X] `cleaner.py` — deduplication, null checks, text normalization
 - [ ] `sentiment.py` — FinBERT inference pipeline
 - [ ] `dashboard.py` — Streamlit dashboard with sentiment trends by ticker
 
