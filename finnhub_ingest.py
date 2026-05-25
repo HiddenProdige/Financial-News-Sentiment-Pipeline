@@ -52,23 +52,10 @@ def fetch_all(tickers: list[str], from_date: str, to_date: str) -> list[Article]
     return all_articles
 
 
-#Developer Test Block to make sure single-ticker data is valid
-# if __name__ == "__main__":
-#     articles = fetch_news("SNOW", "2025-07-01", "2025-08-17")
-#     print(f"Got {len(articles)} articles")
-#     print(articles[0])
-
-
-#Developer Test Block to make sure multi-ticker data is valid
+# Multi-Ticker scrape
 if __name__ == "__main__":
     results = fetch_all(
         tickers= TICKERS,
         from_date= "2025-07-01",
         to_date= "2025-08-17",
     )
-    print(f"\n Total articles fetched: {len(results)}")
-    for a in results[:3]:
-        print(f"\nHeadline : {a.headline}")
-        print(f"Source : {a.author}")
-        print(f"Date : {a.published_at}")
-        print(f"Summary : {a.body[:100]}...")
