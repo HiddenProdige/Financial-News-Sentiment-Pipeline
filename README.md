@@ -29,7 +29,8 @@ Finnhub API → DB (SQLite) → Cleaning & Validation → FinBERT → Dashboard 
 - **Database** — SQLite
 - **NLP / Sentiment** — [FinBERT](https://huggingface.co/ProsusAI/finbert) (HuggingFace Transformers)
 - **Dashboard** — Streamlit
-- **Core Libraries** — `requests`, `python-dotenv`
+- **Core Libraries** — `requests`, `python-dotenv`, `transformers`, `torch`, `streamlit`, `plotly`
+
 
 ---
 
