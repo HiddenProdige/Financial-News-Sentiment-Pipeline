@@ -69,6 +69,24 @@ def filter_too_short(articles: list[dict]) -> list[dict]:
     removed = len(articles) - len(valid)
     print(f"[INFO] Filtered out {removed} articles with bodies shorter than {MIN_BODY_LENGTH} characters. {len(valid)} articles remaining.")
     return valid
+# Filters out newsletter digests and roundup articles that aren't individual news stories
+def filter_digests(articles: list[dict]) -> list[dict]:
+    digest_patterns = [
+        r"\(.*\d{4}\)",          # dates in parentheses e.g. (August 11–15)
+        r"week(ly)? roundup",
+        r"week in review",
+        r"morning brief",
+        r"daily digest",
+        r"news roundup",
+        r":\s.*,.*,.*and",       # multiple topics joined by commas
+    ]
+
+    pattern = re.compile("|".join(digest_patterns), re.IGNORECASE)
+    valid = [a for a in articles if not pattern.search(a["headline"])]
+
+    removed = len(articles) - len(valid)
+    print(f"[INFO] Digest filter: {removed} roundup articles removed | {len(valid)} remaining")
+    return valid
 
 # Full cleaning pipeline
 def run_cleaner() -> list[dict]:
