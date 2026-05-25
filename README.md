@@ -19,7 +19,7 @@ Finnhub API → DB (SQLite) → Cleaning & Validation → FinBERT → Dashboard 
 | Database Layer | `db.py` | ✅ Complete |
 | Cleaning & Validation | `cleaner.py` | ✅ Complete |
 | FinBERT Sentiment | `sentiment.py` | ✅ Complete |
-| Dashboard | `dashboard.py` | 🔧 In Progress |
+| Dashboard | `dashboard.py` | ✅ Complete |
 
 ---
 
@@ -40,12 +40,12 @@ financial-sentiment-pipeline/
 │
 ├── models.py            # Shared Article dataclass used across all pipeline stages
 ├── finnhub_ingest.py    # Finnhub API ingestion — fetches news by ticker
-├── db.py                # SQLite database layer (in progress)
-├── cleaner.py           # Data cleaning and validation (in progress)
-├── sentiment.py         # FinBERT sentiment analysis (planned)
-├── dashboard.py         # Streamlit visualization dashboard (planned)
+├── db.py                # SQLite database layer 
+├── cleaner.py           # Data cleaning and validation 
+├── sentiment.py         # FinBERT sentiment analysis 
+├── dashboard.py         # Streamlit visualization dashboard 
 │
-├── .env                 # API keys — never committed (see .gitignore)
+├── .env                 # API keys — never committed
 ├── .gitignore
 └── README.md
 ```
@@ -117,6 +117,11 @@ The `Article` dataclass is defined once in `models.py` and imported by every sta
 **Why sequential requests with a delay?**
 A 1-second sleep between ticker requests keeps the pipeline well within Finnhub's free rate limit. An `asyncio.Semaphore` approach is planned for the scraper stage if parallelism becomes necessary.
 
+**Why digest filtering?**
+Finnhub returns newsletter roundups alongside individual articles. These 
+multi-topic digests skew FinBERT sentiment since they cover unrelated 
+stories in a single summary. A regex filter removes them before inference.
+
 ---
 
 ## Roadmap
@@ -126,7 +131,7 @@ A 1-second sleep between ticker requests keeps the pipeline well within Finnhub'
 - [X] `db.py` — SQLite schema and insert/query layer
 - [X] `cleaner.py` — deduplication, null checks, text normalization
 - [X] `sentiment.py` — FinBERT inference pipeline
-- [ ] `dashboard.py` — Streamlit dashboard with sentiment trends by ticker
+- [X] `dashboard.py` — Streamlit dashboard with sentiment trends by ticker
 
 ---
 
